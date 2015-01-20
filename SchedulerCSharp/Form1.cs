@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Excel = Microsoft.Office.Interop.Excel;
 using Access = Microsoft.Office.Interop.Access;
+using System.Diagnostics;
 using System.IO;
 
 
@@ -22,17 +23,21 @@ namespace SchedulerCSharp
         {
             //This is the method that loads the scheduler form
             InitializeComponent();
+            lblCurrentTime.Text = DateTime.Now.ToString("h:mm tt");
             timer1.Tick += new EventHandler(timer1_Tick);           // Every time timer ticks, timer_Tick will be called
-            timer1.Interval = 1000;                                 // Timer will tick every second
+            timer1.Interval = 60000;                                // Timer will tick every minute
             timer1.Enabled = true;                                  // Enable the timer
-            timer1.Start();                                         // Start the timer
-            dtpSetTime.Text = DateTime.Now.ToString("h:mm:ss tt");
+            timer1.Start();  // Start the timer
+            dtpSetTime.Format = DateTimePickerFormat.Custom;
+            dtpSetTime.CustomFormat = "h:mm tt";
+            dtpSetTime.Text = DateTime.Now.ToString("h:mm tt");
+
         }
         public void OpenAFile()
         {
             OpenFileDialog dialog = new OpenFileDialog();
-            dialog.Filter = "Excel Macro Files (*.xlsm)|*.xlsm| Access Database Files (*.mdb)|*.mdb"
-                 + "| Access Database Files (*.accdb)|*.accdb";
+            dialog.Filter = " All Types (*.*)|*.*| Excel Macro Files (*.xlsm)|*.xlsm| Access Database Files (*.mdb)|*.mdb"
+                 + "| Access Database Files (*.accdb)|*.accdb| Executable Files (*.exe)|*.exe";
             dialog.InitialDirectory = @"C:\";
             if (dialog.ShowDialog() == DialogResult.OK) // Test result.
             {
@@ -42,7 +47,7 @@ namespace SchedulerCSharp
         }
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            lstBox.Items.Remove(lstBox.SelectedItem);   
+            lstBox.Items.Remove(lstBox.SelectedItem);
             addToQueue();
         }
         protected override void OnResize(EventArgs e)
@@ -83,7 +88,8 @@ namespace SchedulerCSharp
             }
             try
             {
-                if (TextManipulation.RightOf(lblOnDeck.Text, ".") == "xlsm")
+                string ext = TextManipulation.RightOf(lblOnDeck.Text, ".");
+                if (ext == "xlsm")
                 {
                     string mySheet = lblOnDeck.Text;
                     var excelApp = new Excel.Application();
@@ -91,13 +97,18 @@ namespace SchedulerCSharp
                     Excel.Workbooks books = excelApp.Workbooks;
                     Excel.Workbook sheet = books.Open(mySheet);
                 }
-                else if (TextManipulation.RightOf(lblOnDeck.Text, ".") == "mdb" ||
-                    TextManipulation.RightOf(lblOnDeck.Text, ".") == "accdb")
+                else if (ext == "mdb" || ext == "accdb")
                 {
                     string mydb = lblOnDeck.Text;
                     var accessApp = new Access.Application(lblOnDeck.Text);
                     accessApp.Visible = true;
                     accessApp.OpenCurrentDatabase(lblOnDeck.Text);
+                }
+                else
+                {
+                    Process p = new Process();
+                    p.StartInfo.FileName = lblOnDeck.Text;
+                    p.Start();
                 }
             }
             catch (Exception x)
@@ -107,7 +118,7 @@ namespace SchedulerCSharp
         }
         public void timer1_Tick(object sender, EventArgs e)
         {
-            lblCurrentTime.Text = DateTime.Now.ToString("h:mm:ss tt");
+            lblCurrentTime.Text = DateTime.Now.ToString("h:mm tt");
             string mySetTime = lblSetTime.Text.Replace(System.Environment.NewLine, "");
             if (lblCurrentTime.Text == mySetTime)
             {
@@ -115,7 +126,7 @@ namespace SchedulerCSharp
                 OpenExcelFile();
                 addToQueue();
             }
-            else if (lblCurrentTime.Text == "12:00:00 AM")
+            else if (lblCurrentTime.Text == "12:00 AM")
             {
                 addToQueue();
             }
@@ -124,40 +135,11 @@ namespace SchedulerCSharp
         {
             OpenAFile();
         }
-        private void btnGetLast_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                StreamReader sr = new StreamReader("Scheduler.txt");
-                DateTime aDate = new DateTime();
-                string line = "";
-                DateTime MyDate = TextManipulation.getLastDate("Scheduler.txt", " ");
-                Convert.ToDateTime(MyDate);
-                while (line != null)
-                {
-                    line = sr.ReadLine();
-                    if (line != null)
-                    {
-                        aDate = Convert.ToDateTime(TextManipulation.LeftOf(line, " "));
-                        if (aDate == MyDate)
-                        {
-                            lstBox.Items.Add(line.Substring(TextManipulation.Search(line, " ", 1, false),
-                                line.Length - TextManipulation.Search(line, " ", 1, false)));
-                        }
-                    }
-                }
-                addToQueue();
-            }
-            catch (Exception x)
-            {
-                MessageBox.Show("This feature requires that a task has been logged prior. "
-                    + x.Message);
-            }
-        }
+
         private void btnViewLog_Click(object sender, EventArgs e)
         {
             frmLog flog = new frmLog();
-            flog.ShowDialog();
+            flog.Show();
         }
         private void frmScheduler_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -204,27 +186,12 @@ namespace SchedulerCSharp
                     int startIndex = TextManipulation.Search(todayList[nextIndex].ToString(), "|", 1);
                     int endIndex = TextManipulation.Search(todayList[nextIndex].ToString(), "|", 2) - startIndex;
                     lblSetTime.Text = todayList[nextIndex].ToString().Substring(startIndex, endIndex - 1);
-                    ReOrder();
-                }
-            }
-        }
-        private void ReOrder()
-        {
-            for (int i = 0; i < lstBox.Items.Count; i++ )
-            {
-                string item = lstBox.Items[i].ToString();
-                string indicator = item.Substring(0, TextManipulation.Search(item, "|", 2) - 1);
-                if (indicator == lblOnDeck.Text + "|" + lblSetTime.Text)
-                {
-                    lstBox.Items.RemoveAt(i);
-                    lstBox.Items.Insert(0, item);
-                }
 
-                i++;
+                }
             }
         }
         private string[] todayQualifiers()
-        {   
+        {
             ArrayList rList = new ArrayList();
             string weekDay = getToday();
             string monthDay = DateTime.Now.Day.ToString();
@@ -243,7 +210,7 @@ namespace SchedulerCSharp
             }
             string[] meArray = rList.ToArray(typeof(string)) as string[];
             return meArray;
-        }   
+        }
         private string getToday()
         {
             string fullDay = DateTime.Today.DayOfWeek.ToString();
@@ -275,40 +242,29 @@ namespace SchedulerCSharp
             return abrvDay;
         }
         private int nextLowestTime(DateTime[] myTimeArr)
-        {   
-            int i =0;
+        {
+            int i = 0;
             int currentInt = 0;
             DateTime currentTime;
             int currentTimeDiff = 0;
-            DateTime now1 = DateTime.Now;
+            DateTime now1 = Convert.ToDateTime(lblCurrentTime.Text);
             foreach (DateTime dt in myTimeArr)
             {
                 int timeDiff = Convert.ToInt32(dt.Subtract(now1).TotalMinutes);
-               if (i == 0)
-               {
-                   currentInt = i;
-                   currentTime = dt;
-                   currentTimeDiff = timeDiff;
-               }
-               else if (currentTimeDiff > 0 && timeDiff > 0 && timeDiff < currentTimeDiff)
-               {
-                   currentInt = i;
-                   currentTime = dt;
-                   currentTimeDiff = timeDiff;
-               }
-               else if (currentTimeDiff < 0 && timeDiff > 0)
-               {
-                   currentInt = i;
-                   currentTime = dt;
-                   currentTimeDiff = timeDiff;
-               }
-               else if (currentTimeDiff < 0 && timeDiff < currentTimeDiff)
-               {
-                   currentInt = i;
-                   currentTime = dt;
-                   currentTimeDiff = timeDiff;
-               }
-               i++;
+                if (timeDiff <= 0) { timeDiff = timeDiff + (60 * 24); }
+                if (i == 0)
+                {
+                    currentInt = i;
+                    currentTime = dt;
+                    currentTimeDiff = timeDiff;
+                }
+                else if (timeDiff < currentTimeDiff)
+                {
+                    currentInt = i;
+                    currentTime = dt;
+                    currentTimeDiff = timeDiff;
+                }
+                i++;
             }
             return currentInt;
         }
@@ -318,20 +274,20 @@ namespace SchedulerCSharp
             int itemNum = todayList.Count();
             DateTime[] myArr = new DateTime[itemNum];
             foreach (string item in todayList)
-           {
-               int startIndex = TextManipulation.Search(item, "|", 1);
-               int endIndex = TextManipulation.Search(item, "|", 2) - startIndex;
-               string myTime = item.Substring(startIndex, endIndex - 1);
-               myArr[i] = Convert.ToDateTime(myTime);
-               i++;
-           }
-           return myArr;
+            {
+                int startIndex = TextManipulation.Search(item, "|", 1);
+                int endIndex = TextManipulation.Search(item, "|", 2) - startIndex;
+                string myTime = item.Substring(startIndex, endIndex - 1);
+                myArr[i] = Convert.ToDateTime(myTime);
+                i++;
+            }
+            return myArr;
         }
         private void btnAddSchedule_Click(object sender, EventArgs e)
         {
             if (txtFileName.Text != "")
             {
-                ScheduleSetUp SSU = new ScheduleSetUp(txtFileName.Text);
+                ScheduleSetUp SSU = new ScheduleSetUp(txtFileName.Text, dtpSetTime.Text);
                 SSU.ShowDialog();
             }
             else
@@ -470,4 +426,3 @@ namespace SchedulerCSharp
         }
     }
 }
-

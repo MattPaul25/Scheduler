@@ -23,3 +23,20 @@
 9/5/2014 V:\Test1.xlsm|5:09:23 PM
 9/5/2014 C:\Users\Matt\Documents\FractalMaker.xlsm|6:24:28 PM
 9/5/2014 C:\Users\Matt\Documents\FractalMaker.xlsm|6:30:26 PM
+1/19/2015 C:\Users\Matt\AppData\Local\GitHub\GitHub.appref-ms|9:55:59 PM
+1/19/2015 C:\Users\Matt\Desktop\myStuff\GarwinPayment.png|10:33:30 PM
+1/19/2015 C:\Users\Matt\Desktop\Automation project life cycle.pptx|10:35:30 PM
+1/19/2015 C:\Program Files (x86)\iTunes\iTunes.exe|10:37:30 PM
+1/19/2015 C:\Users\Matt\Downloads\ANM Investment Project File.xls|10:40:30 PM
+1/19/2015 C:\Users\Matt\Documents\FractalMaker.xlsm|11:39:00 PM
+1/19/2015 C:\Users\Matt\Test.py|11:40:40 PM
+1/19/2015 C:\Users\Matt\Desktop\myStuff\JohnPaymentDecemberRentAndDeposit.png|11:42:48 PM
+1/19/2015 C:\Ruby193\unins000.exe|11:51:19 PM
+1/19/2015 C:\Users\Matt\Desktop\New folder\Scan-2.txt|11:52:44 PM
+1/20/2015 C:\Users\Matt\Test.py|12:18 AM
+1/20/2015 C:\Users\Matt\Desktop\quickSort.cs|12:21 AM
+1/20/2015 C:\Users\Matt\Desktop\quickSort.cs|12:21 AM
+1/20/2015 C:\Users\Matt\Desktop\Automation project life cycle.pptx|12:22 AM
+1/20/2015 C:\Users\Matt\Desktop\vid\2012-08-25 12.07.59.mov|12:23 AM
+1/20/2015 C:\Users\Matt\Desktop\myStuff\JohnPaymentDecemberRentAndDeposit.png|12:26 AM
+1/20/2015 C:\Users\Matt\Desktop\quickSort.cs|12:27 AM

@@ -90,7 +90,7 @@
             this.tmeSetTime.Name = "tmeSetTime";
             this.tmeSetTime.ShowUpDown = true;
             this.tmeSetTime.Size = new System.Drawing.Size(103, 20);
-            this.tmeSetTime.TabIndex = 15;
+            this.tmeSetTime.TabIndex = 3;
             this.tmeSetTime.Value = new System.DateTime(2014, 9, 3, 0, 0, 0, 0);
             // 
             // cbxMon
@@ -99,7 +99,7 @@
             this.cbxMon.Location = new System.Drawing.Point(125, 93);
             this.cbxMon.Name = "cbxMon";
             this.cbxMon.Size = new System.Drawing.Size(47, 17);
-            this.cbxMon.TabIndex = 16;
+            this.cbxMon.TabIndex = 22;
             this.cbxMon.Text = "Mon";
             this.cbxMon.UseVisualStyleBackColor = true;
             // 
@@ -109,7 +109,7 @@
             this.cbxThurs.Location = new System.Drawing.Point(295, 93);
             this.cbxThurs.Name = "cbxThurs";
             this.cbxThurs.Size = new System.Drawing.Size(53, 17);
-            this.cbxThurs.TabIndex = 17;
+            this.cbxThurs.TabIndex = 19;
             this.cbxThurs.Text = "Thurs";
             this.cbxThurs.UseVisualStyleBackColor = true;
             // 
@@ -119,7 +119,7 @@
             this.cbxSat.Location = new System.Drawing.Point(401, 93);
             this.cbxSat.Name = "cbxSat";
             this.cbxSat.Size = new System.Drawing.Size(42, 17);
-            this.cbxSat.TabIndex = 18;
+            this.cbxSat.TabIndex = 17;
             this.cbxSat.Text = "Sat";
             this.cbxSat.UseVisualStyleBackColor = true;
             // 
@@ -129,7 +129,7 @@
             this.cbxTues.Location = new System.Drawing.Point(180, 93);
             this.cbxTues.Name = "cbxTues";
             this.cbxTues.Size = new System.Drawing.Size(50, 17);
-            this.cbxTues.TabIndex = 19;
+            this.cbxTues.TabIndex = 21;
             this.cbxTues.Text = "Tues";
             this.cbxTues.UseVisualStyleBackColor = true;
             // 
@@ -149,7 +149,7 @@
             this.cbxFri.Location = new System.Drawing.Point(356, 93);
             this.cbxFri.Name = "cbxFri";
             this.cbxFri.Size = new System.Drawing.Size(37, 17);
-            this.cbxFri.TabIndex = 21;
+            this.cbxFri.TabIndex = 18;
             this.cbxFri.Text = "Fri";
             this.cbxFri.UseVisualStyleBackColor = true;
             // 
@@ -159,7 +159,7 @@
             this.cbxSun.Location = new System.Drawing.Point(451, 93);
             this.cbxSun.Name = "cbxSun";
             this.cbxSun.Size = new System.Drawing.Size(45, 17);
-            this.cbxSun.TabIndex = 22;
+            this.cbxSun.TabIndex = 16;
             this.cbxSun.Text = "Sun";
             this.cbxSun.UseVisualStyleBackColor = true;
             // 

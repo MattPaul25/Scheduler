@@ -37,7 +37,6 @@
             this.lblCurrentTime = new System.Windows.Forms.Label();
             this.lblSetTime = new System.Windows.Forms.Label();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
-            this.btnGetLast = new System.Windows.Forms.Button();
             this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
             this.btnViewLog = new System.Windows.Forms.Button();
             this.btnAddtoList = new System.Windows.Forms.Button();
@@ -51,9 +50,9 @@
             // 
             // btnChooseFile
             // 
-            this.btnChooseFile.Location = new System.Drawing.Point(54, 60);
+            this.btnChooseFile.Location = new System.Drawing.Point(15, 60);
             this.btnChooseFile.Name = "btnChooseFile";
-            this.btnChooseFile.Size = new System.Drawing.Size(75, 23);
+            this.btnChooseFile.Size = new System.Drawing.Size(114, 23);
             this.btnChooseFile.TabIndex = 0;
             this.btnChooseFile.Text = "Choose File:";
             this.btnChooseFile.UseVisualStyleBackColor = true;
@@ -77,33 +76,24 @@
             // lblCurrentTime
             // 
             this.lblCurrentTime.AutoSize = true;
-            this.lblCurrentTime.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCurrentTime.Font = new System.Drawing.Font("Magneto", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCurrentTime.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.lblCurrentTime.Location = new System.Drawing.Point(701, 26);
+            this.lblCurrentTime.Location = new System.Drawing.Point(664, 25);
             this.lblCurrentTime.Name = "lblCurrentTime";
-            this.lblCurrentTime.Size = new System.Drawing.Size(93, 15);
+            this.lblCurrentTime.Size = new System.Drawing.Size(126, 20);
             this.lblCurrentTime.TabIndex = 3;
             this.lblCurrentTime.Text = "Current Time";
             // 
             // lblSetTime
             // 
             this.lblSetTime.AutoSize = true;
+            this.lblSetTime.Font = new System.Drawing.Font("Magneto", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSetTime.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.lblSetTime.Location = new System.Drawing.Point(741, 138);
+            this.lblSetTime.Location = new System.Drawing.Point(701, 138);
             this.lblSetTime.Name = "lblSetTime";
-            this.lblSetTime.Size = new System.Drawing.Size(49, 13);
+            this.lblSetTime.Size = new System.Drawing.Size(75, 17);
             this.lblSetTime.TabIndex = 4;
             this.lblSetTime.Text = "Set Time";
-            // 
-            // btnGetLast
-            // 
-            this.btnGetLast.Location = new System.Drawing.Point(15, 18);
-            this.btnGetLast.Name = "btnGetLast";
-            this.btnGetLast.Size = new System.Drawing.Size(114, 23);
-            this.btnGetLast.TabIndex = 7;
-            this.btnGetLast.Text = "Use Last Schedule";
-            this.btnGetLast.UseVisualStyleBackColor = true;
-            this.btnGetLast.Click += new System.EventHandler(this.btnGetLast_Click);
             // 
             // notifyIcon
             // 
@@ -114,9 +104,9 @@
             // 
             // btnViewLog
             // 
-            this.btnViewLog.Location = new System.Drawing.Point(154, 18);
+            this.btnViewLog.Location = new System.Drawing.Point(15, 22);
             this.btnViewLog.Name = "btnViewLog";
-            this.btnViewLog.Size = new System.Drawing.Size(72, 23);
+            this.btnViewLog.Size = new System.Drawing.Size(114, 23);
             this.btnViewLog.TabIndex = 8;
             this.btnViewLog.Text = "View Log";
             this.btnViewLog.UseVisualStyleBackColor = true;
@@ -124,9 +114,9 @@
             // 
             // btnAddtoList
             // 
-            this.btnAddtoList.Location = new System.Drawing.Point(96, 100);
+            this.btnAddtoList.Location = new System.Drawing.Point(81, 100);
             this.btnAddtoList.Name = "btnAddtoList";
-            this.btnAddtoList.Size = new System.Drawing.Size(36, 23);
+            this.btnAddtoList.Size = new System.Drawing.Size(48, 23);
             this.btnAddtoList.TabIndex = 10;
             this.btnAddtoList.Text = "Add";
             this.btnAddtoList.UseVisualStyleBackColor = true;
@@ -134,9 +124,9 @@
             // 
             // btnDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(54, 100);
+            this.btnDelete.Location = new System.Drawing.Point(15, 100);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(36, 23);
+            this.btnDelete.Size = new System.Drawing.Size(53, 23);
             this.btnDelete.TabIndex = 11;
             this.btnDelete.Text = "Del.";
             this.btnDelete.UseVisualStyleBackColor = true;
@@ -145,22 +135,22 @@
             // lblQueue
             // 
             this.lblQueue.AutoSize = true;
-            this.lblQueue.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblQueue.Font = new System.Drawing.Font("Magneto", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblQueue.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.lblQueue.Location = new System.Drawing.Point(12, 138);
             this.lblQueue.Name = "lblQueue";
-            this.lblQueue.Size = new System.Drawing.Size(96, 16);
+            this.lblQueue.Size = new System.Drawing.Size(115, 17);
             this.lblQueue.TabIndex = 12;
             this.lblQueue.Text = "Current Queue:";
             // 
             // lblOnDeck
             // 
             this.lblOnDeck.AutoSize = true;
-            this.lblOnDeck.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblOnDeck.Font = new System.Drawing.Font("Magneto", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblOnDeck.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.lblOnDeck.Location = new System.Drawing.Point(114, 140);
+            this.lblOnDeck.Location = new System.Drawing.Point(133, 138);
             this.lblOnDeck.Name = "lblOnDeck";
-            this.lblOnDeck.Size = new System.Drawing.Size(50, 13);
+            this.lblOnDeck.Size = new System.Drawing.Size(70, 17);
             this.lblOnDeck.TabIndex = 13;
             this.lblOnDeck.Text = "On Deck";
             // 
@@ -172,7 +162,7 @@
             this.dtpSetTime.ShowUpDown = true;
             this.dtpSetTime.Size = new System.Drawing.Size(103, 20);
             this.dtpSetTime.TabIndex = 14;
-            this.dtpSetTime.Value = new System.DateTime(2014, 9, 2, 11, 49, 0, 0);
+            this.dtpSetTime.Value = new System.DateTime(2015, 1, 20, 0, 0, 0, 0);
             // 
             // btnAddSchedule
             // 
@@ -208,7 +198,6 @@
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnAddtoList);
             this.Controls.Add(this.btnViewLog);
-            this.Controls.Add(this.btnGetLast);
             this.Controls.Add(this.lblSetTime);
             this.Controls.Add(this.lblCurrentTime);
             this.Controls.Add(this.txtFileName);
@@ -236,7 +225,6 @@
         private System.Windows.Forms.Label lblCurrentTime;
         private System.Windows.Forms.Label lblSetTime;
         private System.Windows.Forms.ColorDialog colorDialog1;
-        private System.Windows.Forms.Button btnGetLast;
         private System.Windows.Forms.NotifyIcon notifyIcon;
         private System.Windows.Forms.Button btnViewLog;
         private System.Windows.Forms.Button btnAddtoList;

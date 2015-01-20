@@ -16,11 +16,13 @@ namespace SchedulerCSharp
         {
             InitializeComponent();
         }
-        public ScheduleSetUp(string FileName)
+        public ScheduleSetUp(string FileName, string currentTime)
         {
             InitializeComponent();
             txtFilePath.Text = FileName;
-            tmeSetTime.Text = DateTime.Now.ToString();
+            tmeSetTime.Text = currentTime;
+            tmeSetTime.Format = DateTimePickerFormat.Custom;
+            tmeSetTime.CustomFormat = "h:mm tt";
         }
         private void btnCancel_Click(object sender, EventArgs e)
         {
@@ -68,11 +70,33 @@ namespace SchedulerCSharp
             else 
             { 
                 days = days.Substring(0, days.Length - 1); 
-            }           
+            }
+            days = dayReorder(days);
             mySched = mySched + "|" + days;
             DataStore.FileData = mySched;
             DataStore.isNum = monthDate;
             this.Close();
+        }
+
+        private string dayReorder(string days)
+        {
+            //puts the days in correct order
+            string[] cDayArr = { "Mon", "Tues", "Wed", "Thurs", "Fri", "Sat", "Sun" };
+            string[] splitDayArr = days.Split(',');
+            string nDays = "";
+            foreach (string d in cDayArr)
+            {
+                foreach (string y in splitDayArr)
+                {
+                    if (d == y) 
+                    {
+                        nDays = nDays + "," + y;
+                        break;
+                    }
+                }
+            }
+            nDays = nDays.Substring(1, nDays.Length - 1); 
+            return nDays;
         }
     }
 }
