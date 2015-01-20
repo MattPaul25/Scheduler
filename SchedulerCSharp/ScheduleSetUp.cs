@@ -14,8 +14,7 @@ namespace SchedulerCSharp
     {
         public ScheduleSetUp()
         {
-            InitializeComponent(); //testing branch
-
+            InitializeComponent();
         }
         public ScheduleSetUp(string FileName)
         {

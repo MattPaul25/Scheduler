@@ -79,7 +79,7 @@
             this.lblCurrentTime.AutoSize = true;
             this.lblCurrentTime.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCurrentTime.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.lblCurrentTime.Location = new System.Drawing.Point(686, 26);
+            this.lblCurrentTime.Location = new System.Drawing.Point(701, 26);
             this.lblCurrentTime.Name = "lblCurrentTime";
             this.lblCurrentTime.Size = new System.Drawing.Size(93, 15);
             this.lblCurrentTime.TabIndex = 3;
@@ -89,7 +89,7 @@
             // 
             this.lblSetTime.AutoSize = true;
             this.lblSetTime.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.lblSetTime.Location = new System.Drawing.Point(730, 140);
+            this.lblSetTime.Location = new System.Drawing.Point(741, 138);
             this.lblSetTime.Name = "lblSetTime";
             this.lblSetTime.Size = new System.Drawing.Size(49, 13);
             this.lblSetTime.TabIndex = 4;
@@ -189,7 +189,7 @@
             this.lstBox.FormattingEnabled = true;
             this.lstBox.Location = new System.Drawing.Point(15, 157);
             this.lstBox.Name = "lstBox";
-            this.lstBox.Size = new System.Drawing.Size(764, 264);
+            this.lstBox.Size = new System.Drawing.Size(775, 264);
             this.lstBox.TabIndex = 16;
             // 
             // frmScheduler
